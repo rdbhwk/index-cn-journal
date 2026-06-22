@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>世界杯 · 赛事信息查询与对照参考</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background-color: #f7f9fc;
+            color: #1d2b3e;
+            line-height: 1.7;
+        }
+
+        /* 深色头图 */
+        .hero {
+            background: linear-gradient(145deg, #0a1a2f 0%, #142d46 100%);
+            color: #e6edf5;
+            padding: 4rem 2rem 3.2rem;
+            text-align: center;
+            position: relative;
+            border-bottom: 4px solid #f1c40f;
+        }
+        .hero h1 {
+            font-size: 2.6rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            margin-bottom: 0.6rem;
+        }
+        .hero .sub {
+            font-size: 1.1rem;
+            color: #b2c9db;
+            max-width: 600px;
+            margin: 0 auto 0.2rem;
+            font-weight: 400;
+        }
+        .hero .tagline {
+            font-size: 0.95rem;
+            color: #8ba4bc;
+            margin-top: 0.3rem;
+            border-top: 1px solid rgba(241, 196, 15, 0.2);
+            display: inline-block;
+            padding-top: 0.8rem;
+        }
+
+        /* 浅色正文区 */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2.8rem 1.5rem 3.5rem;
+        }
+
+        /* 卡片风格 */
+        .card {
+            background: #ffffff;
+            border-radius: 18px;
+            box-shadow: 0 6px 18px rgba(0, 20, 40, 0.05);
+            padding: 2rem 2rem 2.2rem;
+            margin-bottom: 2.2rem;
+            transition: box-shadow 0.2s ease;
+        }
+        .card:hover {
+            box-shadow: 0 10px 28px rgba(0, 20, 40, 0.08);
+        }
+
+        .card h2 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: #0a1a2f;
+            margin-bottom: 0.9rem;
+            border-left: 4px solid #f1c40f;
+            padding-left: 1rem;
+        }
+
+        .card p, .card li {
+            color: #2c3e50;
+            font-size: 1rem;
+            margin-bottom: 0.65rem;
+        }
+
+        ul.feature-list {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.75rem 1.2rem;
+        }
+        ul.feature-list li {
+            background: #f2f6fb;
+            padding: 0.7rem 1rem;
+            border-radius: 40px;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        ul.feature-list li::before {
+            content: "⚽";
+            font-size: 1.15rem;
+            color: #f1c40f;
+        }
+
+        /* 场景卡片——使用建议 */
+        .scene-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 0.2rem;
+        }
+        .scene-item {
+            flex: 1 1 180px;
+            background: #f4f7fc;
+            border-radius: 16px;
+            padding: 1.2rem 1rem;
+            text-align: center;
+            border: 1px solid #e8edf3;
+        }
+        .scene-item .icon {
+            font-size: 2rem;
+            margin-bottom: 0.35rem;
+            display: block;
+        }
+        .scene-item strong {
+            display: block;
+            font-weight: 600;
+            color: #142d46;
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+        }
+        .scene-item span {
+            font-size: 0.9rem;
+            color: #4b5f78;
+        }
+
+        /* 强调色链接 */
+        a {
+            color: #1a6e9e;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s, color 0.2s;
+        }
+        a:hover {
+            color: #0a4b70;
+            border-bottom-color: #f1c40f;
+        }
+
+        .faq-item {
+            margin-bottom: 1.2rem;
+        }
+        .faq-item strong {
+            display: block;
+            font-weight: 600;
+            color: #0a1a2f;
+            margin-bottom: 0.2rem;
+            font-size: 1rem;
+        }
+        .faq-item p {
+            margin-left: 0;
+            font-size: 0.95rem;
+            padding-left: 0.5rem;
+            border-left: 2px solid #e2e9f2;
+            padding-left: 1rem;
+        }
+
+        .note {
+            background: #f0f4fa;
+            border-radius: 14px;
+            padding: 1.2rem 1.5rem;
+            font-size: 0.92rem;
+            color: #2c4259;
+            border-left: 4px solid #8ba4bc;
+        }
+        .note strong {
+            color: #0a1a2f;
+        }
+
+        /* 响应式 */
+        @media (max-width: 640px) {
+            .hero h1 { font-size: 2rem; }
+            .hero { padding: 3rem 1rem 2.5rem; }
+            .container { padding: 1.5rem 1rem 2.5rem; }
+            .card { padding: 1.5rem 1.2rem; }
+            ul.feature-list { grid-template-columns: 1fr; }
+            .scene-grid { flex-direction: column; }
+            .scene-item { flex: 1 1 auto; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- 深色头图 -->
+<header class="hero">
+    <h1>世界杯 · 赛事信息摘要</h1>
+    <p class="sub">从日常查询、对照到延伸阅读，聚合关键数据与背景</p>
+    <p class="tagline">⚽ 聚焦历届赛果 · 赛程 · 纪录 · 对比</p>
+</header>
+
+<!-- 浅色正文区 -->
+<main class="container">
+
+    <!-- 卡片：摘要 -->
+    <section class="card">
+        <h2>📋 摘要 · 定位</h2>
+        <p>本站围绕<a href="https://index-cn-shijiebei.com">世界杯</a>提供结构化的赛事信息集合，涵盖历届冠军、决赛比分、小组赛数据、射手榜以及赛制演变。内容以事实为基础，便于读者在查阅新闻、讨论比赛或撰写分析时进行快速对照与延伸。</p>
+        <p style="margin-top: 0.4rem;">不包含实时比分预测或主观评论，数据来源均标注可查，适合对信息准确性有要求的日常使用场景。</p>
+    </section>
+
+    <!-- 卡片：亮点 / 特点 -->
+    <section class="card">
+        <h2>✨ 信息组织特点</h2>
+        <ul class="feature-list">
+            <li>历届冠军与决赛比分（1930–2022）</li>
+            <li>小组赛分组与积分对照表</li>
+            <li>历史射手榜 & 单届进球纪录</li>
+            <li>赛程阶段时间线与主办国概览</li>
+            <li>经典比赛引用与背景注释</li>
+            <li>数据交叉筛选快捷入口</li>
+        </ul>
+        <p style="margin-top: 1rem;">每个条目均保持版本可追溯，方便与官方统计或第三方资料进行比对。</p>
+    </section>
+
+    <!-- 卡片：使用建议（场景） -->
+    <section class="card">
+        <h2>🔄 使用建议 · 典型场景</h2>
+        <div class="scene-grid">
+            <div class="scene-item">
+                <span class="icon">📰</span>
+                <strong>新闻对照</strong>
+                <span>阅读赛事报道时快速核实年份、比分等关键数字</span>
+            </div>
+            <div class="scene-item">
+                <span class="icon">🧾</span>
+                <strong>资料整理</strong>
+                <span>撰写回顾、简报或内容策划时引用结构化数据</span>
+            </div>
+            <div class="scene-item">
+                <span class="icon">⚖️</span>
+                <strong>横向比较</strong>
+                <span>不同年代球队表现、进球效率、主办国成绩对比</span>
+            </div>
+            <div class="scene-item">
+                <span class="icon">🎓</span>
+                <strong>延伸阅读</strong>
+                <span>通过配套注释了解赛制变化、冷门赛果背景</span>
+            </div>
+        </div>
+        <p style="margin-top: 0.8rem; font-size: 0.95rem;">—— 例如在讨论历史最佳射手时，可同时参考进球数、出场次数及赛事级别。</p>
+    </section>
+
+    <!-- 卡片：可信但克制的访问说明 -->
+    <section class="card">
+        <h2>📌 访问说明 · 数据原则</h2>
+        <div class="note">
+            <strong>数据范围：</strong> 收录自国际足联官方记录及公开赛事档案，不涉及未公开的内部统计。<br>
+            <strong>更新节奏：</strong> 每届世界杯结束后进行版本更新，确保赛果与纪录同步；休赛期主要做数据校对与结构优化。<br>
+            <strong>使用限制：</strong> 本站内容仅供个人学习、研究或一般信息查询，不构成投注建议或预测依据。所有数据以官方发布为准。
+        </div>
+        <p style="margin-top: 1rem;">如需引用具体条目，建议与 <a href="https://index-cn-shijiebei.com">世界杯</a> 页面内的原始数据进行二次核验。我们不会记录用户的查询行为，页面无第三方追踪脚本。</p>
+    </section>
+
+    <!-- 卡片：FAQ 摘要 -->
+    <section class="card">
+        <h2>❓ 常见查询摘要</h2>
+        <div class="faq-item">
+            <strong>⚽ 哪支球队夺冠次数最多？</strong>
+            <p>巴西队共获得5次冠军（1958、1962、1970、1994、2002），是夺冠次数最多的代表队。页面内可按年份查看每届详情。</p>
+        </div>
+        <div class="faq-item">
+            <strong>📅 下一届世界杯何时举办？</strong>
+            <p>2026年世界杯将由美国、加拿大、墨西哥联合主办，赛制扩军至48支球队。具体赛程与分组信息可在对应栏目内查阅。</p>
+        </div>
+        <div class="faq-item">
+            <strong>📊 如何快速对比两届赛事数据？</strong>
+            <p>使用页面内置的表格筛选功能：选择年份、阶段或指标，即可生成并排对照视图。所有数据均可导出或复制。</p>
+        </div>
+        <p style="margin-top: 0.8rem; font-size: 0.9rem; color: #4a5f78;">→ 更多问题可浏览完整 FAQ 模块。</p>
+    </section>
+
+    <!-- 底部轻提示 -->
+    <div style="margin-top: 1.5rem; text-align: center; font-size: 0.88rem; color: #6b7f97; border-top: 1px solid #dce3ed; padding-top: 1.8rem;">
+        <span>基于公开赛事信息整理 · 数据持续校核</span>
+    </div>
+
+</main>
+
+</body>
+</html>
